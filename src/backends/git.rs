@@ -24,6 +24,9 @@ impl GitRepository{
         let roster_tuple = get_roster_info().unwrap();
         let roster_size = roster_tuple.0;
         let roster_list = roster_tuple.1;
+        //gardening
+        let _deletion = Command::new("rm").args(["-r", "-f", &tmp_path]).output().expect("failed to delete wd");
+        let _newdir = Command::new("mkdir").args([&tmp_path]).output().expect("replacing wd");
         Ok(GitRepository{vcs_link, tmp_path, roster_list, roster_size, commit_count})
     }
 }
@@ -57,6 +60,7 @@ pub fn get_roster_info() -> Result<(i32, Vec<String>), Box<dyn Error>>  {
     let roster_output = Command::new("git").args(["shortlog", "-sne", "--all"]).output().expect("failed to get commit count");
     let commit_roster_string = String::from_utf8(roster_output.stdout).unwrap();
     let commit_roster_list: Vec<String>  = commit_roster_string.split("\n").map(|s| s.to_string()).collect();
+    //let roster_size = commit_roster_list.len().try_into().unwrap() - 1;
     println!("roster length count: {:?}", commit_roster_list.len());
     println!("commit roster: {:?}", commit_roster_list);
     Ok((commit_roster_list.len().try_into().unwrap(), commit_roster_list))
