@@ -52,7 +52,6 @@ pub fn get_commit_info() -> Result<i32, Box<dyn Error>>  {
     let commit_count = &String::from_utf8(count_output.stdout).unwrap();
     let commit_count_clean = &commit_count.replace("\n", "");
     let numeric_count = FromStr::from_str(commit_count_clean).unwrap();
-    println!("commit count: {:?}", commit_count_clean);
     Ok(numeric_count)
 }
 
@@ -61,8 +60,6 @@ pub fn get_roster_info() -> Result<(i32, Vec<String>), Box<dyn Error>>  {
     let commit_roster_string = String::from_utf8(roster_output.stdout).unwrap();
     let commit_roster_list: Vec<String>  = commit_roster_string.split("\n").map(|s| s.to_string()).collect();
     //let roster_size = commit_roster_list.len().try_into().unwrap() - 1;
-    println!("roster length count: {:?}", commit_roster_list.len());
-    println!("commit roster: {:?}", commit_roster_list);
     Ok((commit_roster_list.len().try_into().unwrap(), commit_roster_list))
     //Ok(commit_roster_list.len().try_into().unwrap())
 }
