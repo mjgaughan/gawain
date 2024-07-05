@@ -5,7 +5,7 @@ pub struct Target {
     pub vcs_link: String,
     pub tmp_path: String
 }
-
+// Developing the object that is fed to backend collectors
 impl Target{
     pub fn new(args: &[String]) -> Result<Target, &'static str> {
         if args.len() < 3 {

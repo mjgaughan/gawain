@@ -8,18 +8,11 @@ use std::error::Error;
 use gawain::Target;
 mod backends;
 use backends::git;
-
+// main function
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let mut is_list = false;
-    if args[2] == "-l"{
-        println!("list!");
-        is_list = true;
-    } else {
-        println!("not list!");
-    }
 
-    if !is_list {
+    if args[2] != "-l" {
         if args[1].clone() != "git"{
             println!("Sorry! Only git right now.");
             process::exit(1);
@@ -44,6 +37,8 @@ fn main() {
 
 }
 
+// Function for turning individual vcs links into GitRepository objects
+// this will need to be refactored when parallelism/other vcs are implemented
 fn get_project_git_info(args: Vec<String>) -> Result<git::GitRepository, Box<dyn Error>>  {
     let target = Target::new(&args).unwrap_or_else(|err| {
         println!("Problem parsing arguments: {}", err);
@@ -58,7 +53,7 @@ fn get_project_git_info(args: Vec<String>) -> Result<git::GitRepository, Box<dyn
     Ok(git_results)
 }
 
-
+// Function for turning comma-separated file of projects into usable vector
 fn list_handling (filename: String) -> Result<Vec<String>, Box<dyn Error>> {
     let mut f = File::open(filename).expect("list file not found");
     let mut contents = String::new();
