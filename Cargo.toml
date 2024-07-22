@@ -1,6 +1,6 @@
 [package]
 name = "gawain"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 authors = ["Matt Gaughan"]
 description = "A package to gather data from software repositories, quickly."
