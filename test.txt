@@ -1,0 +1,3 @@
+https://github.com/ian-nai/rust_readability,
+https://github.com/mjgaughan/gawain,
+https://github.com/chaoss/grimoirelab-perceval
