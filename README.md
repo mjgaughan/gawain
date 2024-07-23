@@ -15,7 +15,11 @@ Repositories are reached through specific backends. Right now, Gawain supports:
 ```
 Collected data will be returned in the terminal in the format of a GitRepository object:
 ```
-GitRepository {vcs_link : <VCS link>, tmp_path: <temporary path>, roster_list: [<<commits> <git user>> ...], roster_size: <contributor count>, commit_count: <# of commits>}
+GitRepository {vcs_link : <VCS link>,
+                tmp_path: <temporary path>,
+                roster_list: [<<commits> <git user>> ...],
+                roster_size: <contributor count>,
+                commit_count: <# of commits>}
 ```
 ## Planned Work 
 This project is still in its early stages, with many features yet to be implemented. Proposed features are [here](https://github.com/mjgaughan/gawain/issues). 
