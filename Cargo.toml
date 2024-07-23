@@ -2,6 +2,7 @@
 name = "gawain"
 version = "0.1.0"
 authors = ["Matt Gaughan"]
+edition = "2021"
 description = "A package to gather data from software repositories, quickly."
 readme = "README.md"
 homepage = "https://github.com/mjgaughan/gawain"
