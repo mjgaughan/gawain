@@ -3,6 +3,12 @@ A crate to gather data from software repositories, quickly.
 
 Re: 'gawain', this project is heavily inspired by CHAOSS's [Perceval](https://github.com/chaoss/grimoirelab-perceval) tool. 
 
+## Installation
+```
+cargo install gawain
+
+cargo add gawain
+```
 ## Usage
 ```
 usage: gawain <backend>  <-l> <repository/repositories> <temporary directory>
