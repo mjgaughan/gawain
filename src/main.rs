@@ -4,6 +4,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::str::Split;
 use std::error::Error;
+use serde_json::json;
 
 use gawain::Target;
 mod backends;
@@ -49,7 +50,13 @@ fn get_project_git_info(args: Vec<String>) -> Result<git::GitRepository, Box<dyn
         println!("Problem with git data: {}", err);
         process::exit(1);
     });
-    println!("{:?}",git_results);
+    //println!("{:?}",git_results);
+    // include json transformation here
+    let json_result = json!({
+        "vcs_link" = git_results.vcs_link,
+        "commit_count" = git_results.commit_count,
+        "roster_size" = git_results.roster_size,
+    });
     Ok(git_results)
 }
 
