@@ -51,7 +51,6 @@ fn get_project_git_info(args: Vec<String>) -> Result<String, Box<dyn Error>>  {
         println!("Problem with git data: {}", err);
         process::exit(1);
     });
-    //println!("{:?}",git_results);
     // include json transformation here
     let json_result = json!({
         "vcs_link" : git_results.vcs_link,
