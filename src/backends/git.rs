@@ -1,5 +1,6 @@
 use std::env;
 use std::error::Error;
+use std::fs;
 use std::process::Command;
 use std::str::FromStr;
 
@@ -28,6 +29,7 @@ impl GitRepository{
         let roster_size = roster_tuple.0;
         let roster_list = roster_tuple.1;
         //gardening
+        //fs::remove_dir_all(&tmp_path);
         let _deletion = Command::new("rm").args(["-r", "-f", &tmp_path]).output().expect("failed to delete wd");
         let _newdir = Command::new("mkdir").args([&tmp_path]).output().expect("replacing wd");
         Ok(GitRepository{vcs_link, tmp_path, roster_list, roster_size, commit_count})
