@@ -4,7 +4,9 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::str::Split;
 use std::error::Error;
+
 use serde_json::json;
+use serde_json::Result;
 
 use gawain::Target;
 mod backends;
@@ -57,6 +59,7 @@ fn get_project_git_info(args: Vec<String>) -> Result<git::GitRepository, Box<dyn
         "commit_count" = git_results.commit_count,
         "roster_size" = git_results.roster_size,
     });
+    //let json_result = serde_json::to_string(&git_results);
     Ok(git_results)
 }
 
