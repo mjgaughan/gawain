@@ -6,7 +6,6 @@ edition = "2021"
 description = "A package to gather data from software repositories, quickly."
 readme = "README.md"
 homepage = "https://github.com/mjgaughan/gawain"
-license= "GPL-3.0"
 license-file= "LICENSE"
 rust-version = "1.78.0"
 
